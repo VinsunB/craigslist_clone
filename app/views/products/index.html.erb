@@ -1,0 +1,11 @@
+
+
+<% @products.each do |product| %>
+<p>
+<%= link_to product.title, product %>
+</p>
+<% end %>
+
+<% if @products.to_a.empty? %>
+<p> No Listings </p>
+<% end %>

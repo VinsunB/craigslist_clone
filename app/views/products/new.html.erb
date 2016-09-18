@@ -1,0 +1,21 @@
+<%= form_for(@product) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<%= f.label :category %>
+<% f.radio_button :category, 'category', :checked => true %> 
+<br>
+
+<p>
+<%= f.radio_button :category, 'sporting' %>
+sporting
+</p>
+
+<p>
+<%= f.radio_button :category, 'cars' %>
+cars
+</p>
+
+<br>
+<%= f.submit %>
+<% end %>

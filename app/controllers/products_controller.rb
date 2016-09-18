@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
-before_action :find_product, only: [:ahow, :destroy] 
+before_action :find_product, only: [:show, :destroy] 
 
 # index will change
 def index 
-@products = Product.all
+@products = Product.where(category: params[:category])#.where( location: params[:location])
 end
+
+def home
+	end
 
 def new
 @product = Product.new
@@ -24,7 +27,7 @@ end
 
 	def destroy
 =begin
-	if product created at time == product created at time plus 7 days
+	if product created at time plus 14 days == current time
 		send notice to user && destroy product
 =end
 end
@@ -35,7 +38,7 @@ def find_product
 	@product = Product.find(params[:id])
 end
 
-def pruduct_params
+def product_params
 	params.require(:product).permit(:type, :category, :title, :body, :price, :location, :email, :phone)
 end 
 
