@@ -1,9 +1,18 @@
 class ProductsController < ApplicationController
 before_action :find_product, only: [:show, :destroy] 
 
+
 # index will change
 def index 
 @products = Product.where(category: params[:category])#.where( location: params[:location])
+
+ @products.each do |product|
+product_end_date = product.created_at += 5
+if product_end_date <= Time.now
+	product.destroy
+end
+ end
+
 end
 
 def home
@@ -26,6 +35,9 @@ def show
 end
 
 	def destroy
+@product.destroy
+redirect_to root_path
+
 =begin
 	if product created at time plus 14 days == current time
 		send notice to user && destroy product
